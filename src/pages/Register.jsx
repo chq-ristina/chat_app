@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddAvatar from '../img/addAvatar.png'
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 const Register = () => {
   return (
@@ -14,7 +14,7 @@ const Register = () => {
                 <input type="password" placeholder='password'></input>
                 <input style={{display: "none"}} type="file" id='file'></input>
                 <label htmlFor='file'>
-                    <img src={AddAvatar} alt=''/>
+                    <AddPhotoAlternateIcon style={{fontSize: 40}}/>
                     <span>Add an avatar</span>
                 </label>
                 <button>Sign Up</button>
