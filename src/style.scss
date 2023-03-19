@@ -5,6 +5,8 @@
     --frontPage: #414f4a;
     --sideBar: #698765;
     --topSideBar: #4f634d;
+    --iconColor: #cadec8;
+    font-family: 'Work Sans', sans-serif;
 }
 
 *{
@@ -127,12 +129,13 @@
                     }
 
                     button{
-                        background-color: var(--logoColor);
+                        background-color: #74a66d;;
                         color: var(--textColor);
                         font-size: 14 px;
                         border: none;
                         cursor: pointer;
                         padding: 5px;
+                        border-radius: 5px;
                     }
                 }
             }
@@ -188,6 +191,135 @@
 
         .chat{
             flex: 2;
+
+            span{
+                font-size: 20px;
+                color: var(--textColor);
+            }
+            .chatInfo{
+                height: 50px;
+                background-color: #74a66d;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                color: var(--iconColor);
+
+                .chatIcons{
+                    display: flex;
+                    gap: 10px;
+                }
+
+            }
+        
+            .messages{
+                background-color: #e5f2e4;
+                padding: 10px;
+                height: calc(100% - 160px);
+                overflow: scroll;
+
+                .message{
+                    display: flex;
+                    gap: 20px;
+
+                    .messageInfo{
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 20px;
+
+                        .messageSpan{
+                            font-weight: 300;
+                            font-size: 13px;
+                            color: grey;
+                        }
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .messageContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        margin-bottom: 20px;
+
+                        p{
+                            background-color: white;
+                            padding: 10px 20px;
+                            border-radius: 0px 10px 10px 10px;
+                            max-width: max-content;
+                        }
+                        img{
+                            width: 50%;
+                        }
+                    }
+                    &.owner{
+                        flex-direction: row-reverse;
+                        
+                        .messageContent{
+                            align-items: flex-end;
+                            p{
+                                background-color: var(--logoColor);
+                                border-radius: 10px 0px 10px 10px;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            .input{
+                height: 50px;
+                background-color: white;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                input{
+                    width: 100%;
+                    border:none;
+                    outline: none;
+                    font-size: 18px;
+
+                    &::placeholder{
+                        color: lightgrey;
+                    }
+                }
+
+                .send{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    // color: grey;
+                    // cursor: pointer;
+
+                    .icon{
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                        color: grey;
+                    }
+
+                    button{
+                        border: none;
+                        padding: 10px 15px;
+                        color: var(--frontPage);
+                        background-color:#bbd1ba;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        &:hover{
+                            color: var(--textColor);
+                            background-color: var(--sideBar);
+                        }
+                    }
+                }
+            }
         }
     }
 }
