@@ -14,6 +14,24 @@
     margin: 0;
 }
 
+@mixin mobile{
+    @media screen and (max-width: 480px){
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media screen and (max-width: 768px){
+        @content;
+    }
+}
+
+@mixin laptop{
+    @media screen and (max-width: 1200px){
+        @content;
+    }
+}
+
 .form-container{
     background-color: var(--backgroundColor);
     height: 100vh;
@@ -99,9 +117,14 @@
         display: flex;
         overflow: hidden;
 
+        @include tablet{
+            width: 90%;
+        }
+
         .sidebar{
             flex: 1;
             background-color: var(--sideBar);
+            position: relative;
 
             .navbar{
                 display: flex;
@@ -114,6 +137,9 @@
 
                 .logo{
                     font-weight: bold;
+                    @include tablet{
+                        display: none;
+                    }
                 }
 
                 .user{
@@ -136,6 +162,11 @@
                         cursor: pointer;
                         padding: 5px;
                         border-radius: 5px;
+
+                        @include tablet{
+                            position: absolute;
+                            bottom: 10px;
+                        }
                     }
                 }
             }
