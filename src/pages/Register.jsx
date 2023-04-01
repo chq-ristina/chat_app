@@ -6,11 +6,11 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth, storage, db} from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
   const [err, setErr] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -52,7 +52,7 @@ const Register = () => {
     }catch (err){
       setErr(true);
     }
-  }
+  };
 
   return (
     <div className='form-container'>
@@ -71,7 +71,7 @@ const Register = () => {
                 <button>Sign Up</button>
                 {err && <span>Something went wrong</span>}
             </form>
-            <p>Have an account? Login</p>
+            <p>Have an account? <Link to="/login">Login</Link></p>
         </div>
     </div>
   )
