@@ -5,7 +5,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth, storage, db} from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, addDoc, collection } from "firebase/firestore"; 
 import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
@@ -24,6 +24,8 @@ const Register = () => {
 
       const storageRef = ref(storage, displayName);
 
+      const usersCollectionRef = collection(db, 'users');
+
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async(downloadURL) => {
           try{
@@ -33,6 +35,12 @@ const Register = () => {
               photoURL: downloadURL,
             });
             //create user on firestore
+            // await usersCollectionRef.add({
+            //   uid: res.user.uid,
+            //   displayName,
+            //   email,
+            //   photoURL: downloadURL,
+            // });
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
