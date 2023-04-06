@@ -12,12 +12,15 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
+
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -40,6 +43,7 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
+    dispatch({type: "CHANGE_USER", payload: user});
     //check whether the group(chats in firestore) exists, if not create
     const combinedId =
       currentUser.uid > user.uid
